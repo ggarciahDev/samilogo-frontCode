@@ -1,18 +1,18 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Buscador from './components/Search';
-import Card from './components/Cards/cards'; 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Login from './Components/login';
+import Signup from './Components/signup';
+import listProducts from './Components/listProducts';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Buscador />
-        <Card />
-      </header>
-    </div>
+    <Router>
+      <Route path="/" exact component={Login} />
+      <Route path="/signup" component={Signup} />
+      <Route path="/products" component={listProducts} />
+    </Router>
   );
 }
 

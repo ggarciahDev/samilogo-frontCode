@@ -1,12 +1,15 @@
 {
-  "name": "samilogo-v0",
+  "name": "samilogo-login",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "material-ui": "^0.20.2",
+    "materialize-css": "^1.0.0",
     "react": "^16.11.0",
+    "react-bootstrap": "^1.0.0-beta.14",
     "react-dom": "^16.11.0",
+    "react-materialize": "^3.4.1",
+    "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0"
   },
   "scripts": {
