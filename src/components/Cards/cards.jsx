@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Card from './CardUI';
+import ProductCard from './CardUI';
 import { catchClause } from '@babel/types';
 
 class Cards extends Component {
@@ -8,7 +8,7 @@ class Cards extends Component {
             <div className="container-fluid d-flex justify-content-center">
                 <div className="row">
                     <div className="col-md-3">
-                        <Card />
+                        <ProductCard />
                     </div>
                 </div>
             </div>
