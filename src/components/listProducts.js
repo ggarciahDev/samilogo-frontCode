@@ -1,7 +1,4 @@
 import React, {Component} from 'react';
-import Button from 'react-bootstrap/Button';
-import Function from './function';
-import ProductCard from './productCard';
 import TableProducts from './tableProducts';
 
 class ListProducts extends Component {

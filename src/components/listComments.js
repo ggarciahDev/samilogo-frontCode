@@ -5,7 +5,7 @@ class ListComments extends Component {
     super(args)
 
     this.state = {
-      listC : []
+      listC 
     }
   }
 
@@ -15,7 +15,7 @@ class ListComments extends Component {
   }
 
   getProducts(){
-    fetch('http://localhost:3000/api/products')
+    fetch('http://localhost:3000/api/products/'+args)
     .then(response => response.json())
     .then(products => {
       products.forEach(product => {
@@ -26,24 +26,26 @@ class ListComments extends Component {
     console.log(this.state.listC);
   }
     render () {
-      var title=[];
-      var description =[];
-      var id=[];
+      var title;
+      var reviews_ = [] ;
       return (
+          
         <div className="App">
-            <segment className="BackColor">
-              <br/>
-              <br/>
-              <h1>Productos Online!! ^-^</h1>
-              <br/>
-              <br/>
-              {()=>this.getProducts()}
+            {()=>this.getProducts()}
               {this.state.listC.map((product,index) => {
-                title[index]=product.title;
-                description[index]=product.description;
-                id[index]=product._id;
+                product.reviews.map((review,index) =>{
+                  reviews_[index] = review;
+                })
+                title=product.title;
+                description=product.description;
                 })}
-              <TableProducts titleP={title} descriptionP={description} _id={id}/>
+            <segment className="ListComments">
+              <br/>
+              <br/>
+              <h1>{title}</h1>
+              <br/>
+              <br/>
+              <BarComments revIDS ={ reviews_ }/>
             </segment>
         </div>
       )
