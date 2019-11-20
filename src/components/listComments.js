@@ -1,4 +1,5 @@
 import React from 'react';
+import BarComments from './barComments'
 
 class ListComments extends Component {
   constructor(args){
