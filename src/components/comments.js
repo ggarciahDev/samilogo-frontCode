@@ -1,21 +1,17 @@
-import React, {Component} from 'react';
-import Button from 'react-bootstrap/Button';
-import Function from './function';
-import ProductCard from './productCard';
-import TableProducts from './tableProducts';
+import React from 'react';
 
-class ListProducts extends Component {
+class ListComments extends Component {
   constructor(args){
     super(args)
 
     this.state = {
-      listP : []
+      listC : []
     }
   }
 
   addToList(product){
-    var joined = this.state.listP.concat(product);
-    this.setState({ listP: joined })
+    var joined = this.state.listC.concat(product);
+    this.setState({ listC: joined })
   }
 
   getProducts(){
@@ -23,14 +19,11 @@ class ListProducts extends Component {
     .then(response => response.json())
     .then(products => {
       products.forEach(product => {
-
-        //listP.push( String(product.title) );
         this.addToList( product );
-
       });
     });
 
-    console.log(this.state.listP);
+    console.log(this.state.listC);
   }
     render () {
       var title=[];
@@ -45,7 +38,7 @@ class ListProducts extends Component {
               <br/>
               <br/>
               {()=>this.getProducts()}
-              {this.state.listP.map((product,index) => {
+              {this.state.listC.map((product,index) => {
                 title[index]=product.title;
                 description[index]=product.description;
                 id[index]=product._id;
@@ -58,5 +51,4 @@ class ListProducts extends Component {
   }
 
    
-  export default ListProducts
-
+  export default ListComments
