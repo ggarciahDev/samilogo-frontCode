@@ -2,11 +2,12 @@ import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Login from './Components/login';
-import SignUp from './Components/signup';
-import ListProducts from './Components/listProducts';
+import Login from './components/login';
+import SignUp from './components/signup';
+import ListProducts from './components/listProducts';
 import Button from 'react-bootstrap/Button';
-import auth from './Components/auth';
+import auth from './components/auth';
+import ListComments from './components/listComments'
 
 class App extends React.Component {
   constructor() {
@@ -25,7 +26,7 @@ class App extends React.Component {
     }
   }
 
-  test(){
+  test() {
     console.log(auth.user);
   }
 
@@ -33,6 +34,7 @@ class App extends React.Component {
     return (
       <div>
         <Router>
+
           <Route
             path='/'
             exact
@@ -47,6 +49,11 @@ class App extends React.Component {
           <Route
             path='/products'
             render={(props) => <ListProducts {...props} />}
+          />
+
+          <Route
+            path='/:id'
+            render={(props) => <ListComments {...props} />}
           />
         </Router>
 
