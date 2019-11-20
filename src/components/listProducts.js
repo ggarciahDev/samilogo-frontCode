@@ -40,7 +40,10 @@ class ListProducts extends Component {
       return (
         <div className="App">
             <segment className="BackColor">
+              <br/>
+              <br/>
               <h1>Productos Online!! ^-^</h1>
+              <br/>
               <br/>
               {()=>this.getProducts()}
               {this.state.listP.map((product,index) => {
