@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {Component}  from 'react';
 import BarComments from './barComments'
 
 class ListComments extends Component {
-  constructor(args){
-    super(args)
+  constructor(props){
+    super(props)
 
     this.state = {
-      listC 
+      listC: []
     }
   }
 
@@ -16,7 +16,7 @@ class ListComments extends Component {
   }
 
   getProducts(){
-    fetch('http://localhost:3000/api/products/'+args)
+    fetch('http://localhost:3000/api/products/'+this.props)
     .then(response => response.json())
     .then(products => {
       products.forEach(product => {
@@ -32,21 +32,22 @@ class ListComments extends Component {
       return (
           
         <div className="App">
+          <segment className="BackColor">
             {()=>this.getProducts()}
               {this.state.listC.map((product,index) => {
                 product.reviews.map((review,index) =>{
                   reviews_[index] = review;
                 })
                 title=product.title;
-                description=product.description;
                 })}
-            <segment className="ListComments">
+            <segment>
               <br/>
               <br/>
               <h1>{title}</h1>
               <br/>
               <br/>
-              <BarComments revIDS ={ reviews_ }/>
+              <BarComments listReviews ={ reviews_ }/>
+            </segment>
             </segment>
         </div>
       )

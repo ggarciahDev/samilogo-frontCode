@@ -1,17 +1,26 @@
 import React from 'react';
 import CommentCard from './commentCard';
 
-function BarComments({ listReviews }){
-    var cont = 0;    
+function BarComments({ listReviews }) {
+
     return (
-        <section>
-        {
-            listReviews.map((review,index) =>{
-                <CommentCard cUser = {review.user} cComment={review.comment}/>
-              })
-        }
-        </section>
-    ); 
+        <div >
+            
+            <br/>
+                <h1>COMENTARIOS</h1>
+                <br />
+                <br />
+                {
+
+                    listReviews.map((review, index) => {
+                        return <CommentCard cUser={review.user} cComment={review.comment} />
+                    })
+                }
+            
+        </div>
+    );
 }
 
 export default BarComments
+/*
+*/
