@@ -14,7 +14,7 @@ function ProductCard({ pTitle, pDescription, pId }) {
                 </Card.Text>
 
                 <Link className="Font-Link" to={"/"+pId}>
-                    <Button variant="primary">Comments</Button>
+                    <Button variant="primary">Comments X</Button>
                 </Link>
             </Card.Body>
         </Card>
