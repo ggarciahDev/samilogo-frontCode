@@ -27,7 +27,7 @@ class App extends React.Component {
   }
 
   test() {
-    console.log(auth.user);
+    console.log(auth.currentProductID);
   }
 
   render() {
