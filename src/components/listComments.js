@@ -85,37 +85,3 @@ class ListComments extends Component {
 }
 
 export default ListComments
-/*
-var user1 =this.state.product.reviews;
-    user1.map((rev,index) =>{
-      usrs[index]= rev.user;
-    });
-
-
-<CommentCard cUser={this.state.product.reviews[0].user} cComment={this.state.product.reviews[0].comment}  />
-<CommentCard cUser={this.state.product.reviews[1].user} cComment={this.state.product.reviews[1].comment}  />
-
-
-
-var rev = [];
-    var usr = [];
-    var com = [];
-    var cont = 0;
-    rev = this.state.product.reviews;
-    rev.forEach(element => {
-      usr[cont] = element.user;
-      com[cont] = element.comment;
-      cont++;
-    });
- var users =[];
-    var comments =[];
-    this.state.product.reviews.map((review,index) => {
-        users[index] = review.user;
-        comments[index] = review.comment;
-      });
-{
-          this.state.product.forEach((reviews) => {
-            return <CommentCard cUser={reviews[2]} cComment={reviews[0]} />
-          })
-          }
-*/

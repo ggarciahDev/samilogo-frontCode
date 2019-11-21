@@ -99,20 +99,3 @@ class Login extends Component {
 }
 
 export default Login
-
-/*
-              onClick={
-                () => {
-                  auth.logIn( () => {
-                    this.props.history.push("/products")
-                  } )
-                }
-              }
-
-
-            <Link className="Font-Link" to="/products">
-              <Button onClick={this.logIn} variant="primary" type="submit">
-                Ingresar
-              </Button>
-            </Link>
-*/

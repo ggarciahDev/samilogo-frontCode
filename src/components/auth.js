@@ -14,21 +14,21 @@ class Auth {
         }
     }
 
-    resetComment(){
+    resetComment() {
         this.comment = ""
     }
 
-    setComment(message){
+    setComment(message) {
         this.comment = message
     }
 
-    setCurrentProductID(pID){
+    setCurrentProductID(pID) {
         this.currentProductID = pID
     }
 
-    setUser(user){
+    setUser(user) {
         this.user._id = user._id
-        this.user.name = user.name 
+        this.user.name = user.name
         this.user.age = user.age
         this.user.city = user.city
         this.user.address = user.address
@@ -39,14 +39,14 @@ class Auth {
         console.log(this.user);
     }
 
-    logIn(){
+    logIn() {
         this.authenticated = true;
     }
 
-    logOut(){
+    logOut() {
         this.authenticated = false;
         this.user = {
-            _id : '',
+            _id: '',
             name: "",
             age: 0,
             city: "",
@@ -56,7 +56,7 @@ class Auth {
         }
     }
 
-    isAuth(){
+    isAuth() {
         return this.authenticated;
     }
 }
