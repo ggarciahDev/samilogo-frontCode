@@ -14,7 +14,7 @@ class ListProducts extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/products')
+    fetch('http://localhost:8080/api/products')
       .then(response => response.json())
       .then(products => this.setState({ listP: products }))
   }
