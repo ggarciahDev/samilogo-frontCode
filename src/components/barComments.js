@@ -7,15 +7,13 @@ function BarComments({ listReviews }) {
         <div >
             
             <br/>
-                <h1>COMENTARIOS</h1>
-                <br />
-                <br />
-                {
-
-                    listReviews.map((review, index) => {
-                        return <CommentCard cUser={review.user} cComment={review.comment} />
-                    })
-                }
+            <h2>COMENTARIOS</h2>
+            <br />
+            {
+                listReviews.map((review, index) => {
+                    return <CommentCard cUser={review.user} cComment={review.comment} />
+                })
+            }
             
         </div>
     );

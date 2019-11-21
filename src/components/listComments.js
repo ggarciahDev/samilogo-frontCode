@@ -1,52 +1,41 @@
 import React, {Component}  from 'react';
 import BarComments from './barComments'
+import auth from './auth';
 
 class ListComments extends Component {
   constructor(props){
     super(props)
 
     this.state = {
-      listC: []
+      listC: [],
+      title: "",
+      reviews_: [] 
     }
   }
-
-  addToList(product){
-    var joined = this.state.listC.concat(product);
-    this.setState({ listC: joined })
-  }
-
-  getProducts(){
-    fetch('http://localhost:3000/api/products/'+this.props)
+  componentDidMount() {
+    console.log(this.props.match.params.id)
+    fetch('http://localhost:3000/api/products'+auth.currentProductID)
     .then(response => response.json())
-    .then(products => {
-      products.forEach(product => {
-        this.addToList( product );
-      });
-    });
-
-    console.log(this.state.listC);
+    .then(products => this.setState({listP: products}))
   }
     render () {
-      var title;
-      var reviews_ = [] ;
+      
+      this.state.listC.map((product,index) => {
+        this.title=product.title;
+        product.reviews.map((review,index) =>{
+          this.reviews_[index] = review;
+        });
+        });
       return (
-          
+        <br/>
+        <br/>
+        <h1>{this.title}</h1>
+        <br/>
+        <br/>
         <div className="App">
           <segment className="BackColor">
-            {()=>this.getProducts()}
-              {this.state.listC.map((product,index) => {
-                product.reviews.map((review,index) =>{
-                  reviews_[index] = review;
-                })
-                title=product.title;
-                })}
             <segment>
-              <br/>
-              <br/>
-              <h1>{title}</h1>
-              <br/>
-              <br/>
-              <BarComments listReviews ={ reviews_ }/>
+              <BarComments listReviews ={ this.reviews_ }/>
             </segment>
             </segment>
         </div>

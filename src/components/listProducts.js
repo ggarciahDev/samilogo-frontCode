@@ -16,27 +16,6 @@ class ListProducts extends Component {
     .then(response => response.json())
     .then(products => this.setState({listP: products}))
   }
-/*
-  addToList(product){
-    var joined = this.state.listP.concat(product);
-    this.setState({ listP: joined })
-  }
-
-  getProducts(){
-    fetch('http://localhost:3000/api/products')
-    .then(response => response.json())
-    .then(products => {
-      products.forEach(product => {
-
-        //listP.push( String(product.title) );
-        this.addToList( product );
-
-      });
-    });
-
-    console.log(this.state.listP);
-  }
-  */
     render () {
       var title=[];
       var description =[];
