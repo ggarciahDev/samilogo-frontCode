@@ -4,13 +4,14 @@ import auth from './auth';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import Form from 'react-bootstrap/Form';
 
 class ListComments extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
+            errorText: "",
             title: "",
             description: "",
             product: auth.selectedProduct
@@ -34,7 +35,7 @@ class ListComments extends Component {
             })
 
         auth.resetComment();
-
+        auth.resetSelectedProduct();
         // PUT  localhost:puerto/api/products/:id
     }
 
@@ -52,48 +53,44 @@ class ListComments extends Component {
             .then(pro => {
 
                 auth.setSelectedProduct(pro);
-                //this.addToProduct( pro );
-                //this.setState({ product: pro })
-
-
-                //console.log(auth.selectedProduct)
-                //console.log(pro)
             })
+    }
 
-        /*while(this.state.product.length==0){
-  
-        }*/
-
+    resetSelectedProduct() {
+        auth.resetSelectedProduct();
     }
 
     render() {
         return (
             <div className="App">
                 <segment className="BackColor">
-                        <Button onClick={this.refreshInformation}>
-                            Cargar información
+                    <Button onClick={this.refreshInformation}>
+                        Cargar información
                         </Button>
-                        <br/>
-                        <h1>{auth.selectedProduct.title}</h1>
-                        <p>{auth.selectedProduct.description}</p>
+                    <br />
+                    <h1>{auth.selectedProduct.title}</h1>
+                    <p>{auth.selectedProduct.description}</p>
 
-                    {auth.selectedProduct.reviews.map((review,index) => {
+                    {auth.selectedProduct.reviews.map((review, index) => {
                         return <CommentCard cUser={review.user} cComment={review.comment} />
                     })}
 
-                    <br/>
+                    <br />
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Escribe tu comentario</label>
                         <textarea onChange={this.setComment} class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                        <Button onClick={this.sendComment}>
-                            Comentar
-                        </Button>
+
+                        <Link className="Font-Link" to={"/products"}>
+                            <Button onClick={this.sendComment}>
+                                Comentar
+                            </Button>
+                        </Link>
 
                     </div>
                     <div class="form-group">
                         <Link className="Font-Link" to={"/products"}>
-                            <Button variant="primary">Go back</Button>
+                            <Button onClick={this.resetSelectedProduct} variant="primary">Go back</Button>
                         </Link>
 
                     </div>
@@ -110,7 +107,7 @@ export default ListComments
                     {auth.selectedProduct.reviews.map((review,index) => {
                         return <CommentCard cUser={review.user} cComment={review.comment} />
                     })}
-    
+
                     <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"Primer Comentario Producto 1"} />
                     <CommentCard cUser={"5dce17c32e64e0410c97a659"} cComment={"Otro comentario"} />
                     <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"Mi mensaje es muy importante brpw"} />

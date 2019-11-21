@@ -22,6 +22,17 @@ class Auth {
         }
     }
 
+    resetSelectedProduct(){
+        this.selectedProduct = {
+            title: "^ Clic button ^",
+            description: "",
+            reviews: [
+                {user: "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _",
+                comment: "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"}
+            ]
+        }
+    }
+
     setSelectedProduct(product){
         this.selectedProduct = product
     }
