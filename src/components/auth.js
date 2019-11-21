@@ -1,5 +1,6 @@
 class Auth {
     constructor() {
+        this.comment = ""
         this.currentProductID = ""
         this.authenticated = false
         this.user = {
@@ -11,6 +12,14 @@ class Auth {
             email: "",
             password: ""
         }
+    }
+
+    resetComment(){
+        this.comment = ""
+    }
+
+    setComment(message){
+        this.comment = message
     }
 
     setCurrentProductID(pID){
