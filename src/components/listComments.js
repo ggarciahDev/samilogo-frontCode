@@ -1,47 +1,37 @@
-import React, {Component}  from 'react';
+import React, { Component } from 'react';
 import BarComments from './barComments'
 import auth from './auth';
 
 class ListComments extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
 
     this.state = {
-      listC: [],
-      title: "",
-      reviews_: [] 
+      product : null
     }
   }
   componentDidMount() {
-    console.log(this.props.match.params.id)
-    fetch('http://localhost:3000/api/products'+auth.currentProductID)
-    .then(response => response.json())
-    .then(products => this.setState({listP: products}))
+    console.log(auth.currentProductID)
+    fetch('http://localhost:3000/api/products/' + auth.currentProductID)
+      .then(response => response.json())
+      .then(products => this.setState({ product: products }))
   }
-    render () {
-      
-      this.state.listC.map((product,index) => {
-        this.title=product.title;
-        product.reviews.map((review,index) =>{
-          this.reviews_[index] = review;
-        });
-        });
-      return (
-        <br/>
-        <br/>
-        <h1>{this.title}</h1>
-        <br/>
-        <br/>
-        <div className="App">
-          <segment className="BackColor">
-            <segment>
-              <BarComments listReviews ={ this.reviews_ }/>
-            </segment>
-            </segment>
-        </div>
+  render() {
+    console.log(this.product)
+    return (
+      <div className="App">
+        <segment className="BackColor">
+        <segment className="BackColor">
+          <br />
+          <h1>{this.product.title}</h1>
+          <br />
+        </segment>
+          <BarComments listReviews={this.product.reviews} />
+        </segment>
+      </div>
       )
-    }
   }
+}
 
-   
-  export default ListComments
+
+export default ListComments

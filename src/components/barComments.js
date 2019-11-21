@@ -8,7 +8,7 @@ function BarComments({ listReviews }) {
             
             <br/>
             <h2>COMENTARIOS</h2>
-            <br />
+            <br/>
             {
                 listReviews.map((review, index) => {
                     return <CommentCard cUser={review.user} cComment={review.comment} />
