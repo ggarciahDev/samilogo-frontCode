@@ -15,7 +15,7 @@ function ProductCard({ pTitle, pDescription, pID }) {
                 </Card.Text>
 
                 <Link className="Font-Link" to={"/comments/"+pID}>
-                    <Button  variant="primary">Comments</Button>
+                    <Button onClick={ () => { auth.setCurrentProductID(pID) } } variant="primary">Comments</Button>
                 </Link>
             </Card.Body>
         </Card>
