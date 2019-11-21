@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import BarComments from './barComments'
-import auth from './auth';
+import Button from 'react-bootstrap/Button';
+import CommentCard from './commentCard';
 
 class ListComments extends Component {
   constructor(props) {
@@ -15,25 +15,23 @@ class ListComments extends Component {
     fetch(`http://localhost:3000/api/products/${this.props.match.params.id}`)
       .then(response => response.json())
       .then(pro => {
-        this.setState({product : pro})
-        console.log(this.state)
-        console.log(pro)
+        this.setState({ product: pro })
       }
       )
-      
+
   }
-
   render() {
-    console.log(this.state)
-
+    
     return (
       <div className="App">
         <segment className="BackColor">
-          <segment className="BackColor">
           <h1>{this.state.product.title}</h1>
           <p>{this.state.product.description}</p>
-          </segment>
-          <BarComments listReviews={this.state.product.reviews} />
+          <br />
+          <br />
+          <CommentCard cUser={this.state.product.reviews[0].user} cComment={this.state.product.reviews[0].comment}  />
+          <CommentCard cUser={this.state.product.reviews[1].user} cComment={this.state.product.reviews[1].comment}  />
+          <Button variant="primary">GO BACK</Button>
         </segment>
       </div>
     )
@@ -41,3 +39,26 @@ class ListComments extends Component {
 }
 
 export default ListComments
+/*
+var rev = [];
+    var usr = [];
+    var com = [];
+    var cont = 0;
+    rev = this.state.product.reviews;
+    rev.forEach(element => {
+      usr[cont] = element.user;
+      com[cont] = element.comment;
+      cont++;
+    });
+ var users =[];
+    var comments =[];
+    this.state.product.reviews.map((review,index) => {
+        users[index] = review.user;
+        comments[index] = review.comment;
+      });
+{
+          this.state.product.forEach((reviews) => {
+            return <CommentCard cUser={reviews[2]} cComment={reviews[0]} />
+          })
+          }
+*/

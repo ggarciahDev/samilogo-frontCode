@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button';
+
 
 function CommentCard({ cUser, cComment }){    
     return (
@@ -10,7 +10,6 @@ function CommentCard({ cUser, cComment }){
                 <Card.Text>
                     {cComment}
                 </Card.Text>
-                <Button variant="primary">GO BACK</Button>
             </Card.Body>
         </Card>
     ); 
