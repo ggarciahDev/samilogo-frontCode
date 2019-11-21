@@ -1,22 +1,38 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-import Button from 'react-bootstrap/Button';
 import CommentCard from './commentCard';
-=======
-import BarComments from './barComments'
 import auth from './auth';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
->>>>>>> 3203eea8be87e492e63e19c9f623c8cbf0970c51
+import { Link } from 'react-router-dom';
+
 
 class ListComments extends Component {
-    constructor(props) {
-        super(props)
+  constructor(props) {
+    super(props)
 
-<<<<<<< HEAD
     this.state = {
-      product: []
+      product: {}
     }
+  }
+
+  setComment = (e) => {
+    auth.setComment(e.target.value);
+  }
+
+  sendComment() {
+    axios.put("http://localhost:3000/api/products/" + auth.currentProductID, {
+      review: {
+        user: auth.user._id,
+        comment: auth.comment
+      }
+    })
+      .then(res => {
+        console.log(res.data);
+      })
+
+    auth.resetComment();
+
+    // PUT  localhost:puerto/api/products/:id
   }
 
   componentDidMount() {
@@ -24,93 +40,49 @@ class ListComments extends Component {
       .then(response => response.json())
       .then(pro => {
         this.setState({ product: pro })
+        console.log(this.state)
+        console.log(pro)
       }
       )
 
   }
+
+
+
   render() {
-    console.log(this.state.product);
-    console.log(this.state.product.reviews);
     return (
       <div className="App">
         <segment className="BackColor">
-          <h1>{this.state.product.title}</h1>
-          <p>{this.state.product.description}</p>
-          <br />
-          <br />
-          <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment = {"Primer Comentario Producto 1"}/>
-          <CommentCard cUser={"5dce17c32e64e0410c97a659"} cComment = {"Otro comentario"}/>
-          <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment = {"Mi mensaje es muy importante brpw"}/>
-          <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment = {"este es mi mensaje carajo}"}/>
-          <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment = {"este es el p1"}/>
-          <Button variant="primary">GO BACK</Button>
+          <segment className="BackColor">
+            <h1>{this.state.product.title}</h1>
+            <p>{this.state.product.description}</p>
+          </segment>
+
+          <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"Primer Comentario Producto 1"} />
+          <CommentCard cUser={"5dce17c32e64e0410c97a659"} cComment={"Otro comentario"} />
+          <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"Mi mensaje es muy importante brpw"} />
+          <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"este es mi mensaje carajo}"} />
+          <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"este es el p1"} />
+
+          <div class="form-group">
+            <label for="exampleFormControlTextarea1">Escribe tu comentario</label>
+            <textarea onChange={this.setComment} class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+            <Button onClick={this.sendComment}>
+              Comentar
+                        </Button>
+                        
+          </div>
+          <div class="form-group">
+          <Link className="Font-Link" to={"/products"}>
+                    <Button variant="primary">Go back</Button>
+                </Link>
+                        
+          </div>
         </segment>
       </div>
     )
   }
-=======
-        this.state = {
-            product: {}
-        }
-    }
 
-    setComment = (e) => {
-        auth.setComment(e.target.value);
-    }
-
-    sendComment(){
-        axios.put("http://localhost:3000/api/products/"+auth.currentProductID,{
-            review:{
-                user: auth.user._id,
-                comment: auth.comment
-            }
-        })
-        .then(res => {
-            console.log(res.data);
-        })
-
-        auth.resetComment();
-
-        // PUT  localhost:puerto/api/products/:id
-    }
-
-    componentDidMount() {
-        fetch(`http://localhost:3000/api/products/${this.props.match.params.id}`)
-            .then(response => response.json())
-            .then(pro => {
-                this.setState({ product: pro })
-                console.log(this.state)
-                console.log(pro)
-            }
-            )
-
-    }
-
-
-
-    render() {
-        return (
-            <div className="App">
-                <segment className="BackColor">
-                    <segment className="BackColor">
-                        <h1>{this.state.product.title}</h1>
-                        <p>{this.state.product.description}</p>
-                    </segment>
-
-                    <BarComments listReviews={this.state.product.reviews} />
-
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                        <textarea onChange={this.setComment} class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                        <Button onClick={this.sendComment}>
-                            Comentar
-                        </Button>
-                    </div>
-                </segment>
-            </div>
-        )
-    }
->>>>>>> 3203eea8be87e492e63e19c9f623c8cbf0970c51
 }
 
 export default ListComments
