@@ -11,6 +11,12 @@ class ListProducts extends Component {
     }
   }
 
+  componentDidMount() {
+    fetch('http://localhost:3000/api/products')
+    .then(response => response.json())
+    .then(products => this.setState({listP: products}))
+  }
+/*
   addToList(product){
     var joined = this.state.listP.concat(product);
     this.setState({ listP: joined })
@@ -30,11 +36,11 @@ class ListProducts extends Component {
 
     console.log(this.state.listP);
   }
+  */
     render () {
       var title=[];
       var description =[];
       var id=[];
-      this.getProducts();
       this.state.listP.map((product,index) => {
         title[index]=product.title;
         description[index]=product.description;

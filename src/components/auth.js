@@ -1,5 +1,6 @@
 class Auth {
     constructor() {
+        this.currentProductID = ""
         this.authenticated = false
         this.user = {
             _id: '',
@@ -10,6 +11,10 @@ class Auth {
             email: "",
             password: ""
         }
+    }
+
+    setCurrentProductID(pID){
+        this.currentProductID = pID
     }
 
     setUser(user){

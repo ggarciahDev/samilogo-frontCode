@@ -52,7 +52,7 @@ class App extends React.Component {
           />
 
           <Route
-            path='/:id'
+            path='/comments/:id'
             render={(props) => <ListComments {...props} />}
           />
         </Router>

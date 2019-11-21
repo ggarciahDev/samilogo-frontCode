@@ -1,7 +1,8 @@
 import React from 'react';
-import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import auth from './auth';
 
 function ProductCard({ pTitle, pDescription, pID }) {
     return (
@@ -13,8 +14,8 @@ function ProductCard({ pTitle, pDescription, pID }) {
                     {pDescription}
                 </Card.Text>
 
-                <Link className="Font-Link" to={"/"+pID}>
-                    <Button variant="primary">Comments</Button>
+                <Link className="Font-Link" to={"/comments/"+pID}>
+                    <Button  variant="primary">Comments</Button>
                 </Link>
             </Card.Body>
         </Card>
