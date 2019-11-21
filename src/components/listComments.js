@@ -7,31 +7,37 @@ class ListComments extends Component {
     super(props)
 
     this.state = {
-      product : null
+      product: {}
     }
   }
+
   componentDidMount() {
-    console.log(auth.currentProductID)
-    fetch('http://localhost:3000/api/products/' + auth.currentProductID)
+    fetch(`http://localhost:3000/api/products/${this.props.match.params.id}`)
       .then(response => response.json())
-      .then(products => this.setState({ product: products }))
+      .then(pro => {
+        this.setState({product : pro})
+        console.log(this.state)
+        console.log(pro)
+      }
+      )
+      
   }
+
   render() {
-    console.log(this.product)
+    console.log(this.state)
+
     return (
       <div className="App">
         <segment className="BackColor">
-        <segment className="BackColor">
-          <br />
-          <h1>{this.product.title}</h1>
-          <br />
-        </segment>
-          <BarComments listReviews={this.product.reviews} />
+          <segment className="BackColor">
+          <h1>{this.state.product.title}</h1>
+          <p>{this.state.product.description}</p>
+          </segment>
+          <BarComments listReviews={this.state.product.reviews} />
         </segment>
       </div>
-      )
+    )
   }
 }
-
 
 export default ListComments

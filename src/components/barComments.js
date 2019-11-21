@@ -9,11 +9,7 @@ function BarComments({ listReviews }) {
             <br/>
             <h2>COMENTARIOS</h2>
             <br/>
-            {
-                listReviews.map((review, index) => {
-                    return <CommentCard cUser={review.user} cComment={review.comment} />
-                })
-            }
+
             
         </div>
     );
@@ -21,4 +17,9 @@ function BarComments({ listReviews }) {
 
 export default BarComments
 /*
+            {
+                listReviews.map((review, index) => {
+                    return <CommentCard cUser={review.user} cComment={review.comment} />
+                })
+            }
 */
