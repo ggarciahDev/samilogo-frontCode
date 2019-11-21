@@ -7,86 +7,121 @@ import { Link } from 'react-router-dom';
 
 
 class ListComments extends Component {
-  constructor(props) {
-    super(props)
+    constructor(props) {
+        super(props)
 
-    this.state = {
-      product: {}
+        this.state = {
+            title: "",
+            description: "",
+            product: auth.selectedProduct
+        }
+        this.refreshInformation = this.refreshInformation.bind(this);
     }
-  }
 
-  setComment = (e) => {
-    auth.setComment(e.target.value);
-  }
+    setComment = (e) => {
+        auth.setComment(e.target.value);
+    }
 
-  sendComment() {
-    axios.put("http://localhost:3000/api/products/" + auth.currentProductID, {
-      review: {
-        user: auth.user._id,
-        comment: auth.comment
-      }
-    })
-      .then(res => {
-        console.log(res.data);
-      })
+    sendComment() {
+        axios.put("http://localhost:3000/api/products/" + auth.currentProductID, {
+            review: {
+                user: auth.user._id,
+                comment: auth.comment
+            }
+        })
+            .then(res => {
+                console.log(res.data);
+            })
 
-    auth.resetComment();
+        auth.resetComment();
 
-    // PUT  localhost:puerto/api/products/:id
-  }
+        // PUT  localhost:puerto/api/products/:id
+    }
 
-  componentDidMount() {
-    fetch(`http://localhost:3000/api/products/${this.props.match.params.id}`)
-      .then(response => response.json())
-      .then(pro => {
-        this.setState({ product: pro })
-        console.log(this.state)
-        console.log(pro)
-      }
-      )
+    refreshInformation() {
+        console.log(auth.selectedProduct.title)
 
-  }
+        this.setState({
+            product: auth.selectedProduct
+        })
+    }
+
+    componentDidMount() {
+        fetch(`http://localhost:3000/api/products/${this.props.match.params.id}`)
+            .then(response => response.json())
+            .then(pro => {
+
+                auth.setSelectedProduct(pro);
+                //this.addToProduct( pro );
+                //this.setState({ product: pro })
 
 
+                //console.log(auth.selectedProduct)
+                //console.log(pro)
+            })
 
-  render() {
-    return (
-      <div className="App">
-        <segment className="BackColor">
-          <segment className="BackColor">
-            <h1>{this.state.product.title}</h1>
-            <p>{this.state.product.description}</p>
-          </segment>
+        /*while(this.state.product.length==0){
+  
+        }*/
 
-          <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"Primer Comentario Producto 1"} />
-          <CommentCard cUser={"5dce17c32e64e0410c97a659"} cComment={"Otro comentario"} />
-          <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"Mi mensaje es muy importante brpw"} />
-          <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"este es mi mensaje carajo}"} />
-          <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"este es el p1"} />
+    }
 
-          <div class="form-group">
-            <label for="exampleFormControlTextarea1">Escribe tu comentario</label>
-            <textarea onChange={this.setComment} class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-            <Button onClick={this.sendComment}>
-              Comentar
+    render() {
+        return (
+            <div className="App">
+                <segment className="BackColor">
+                        <Button onClick={this.refreshInformation}>
+                            Cargar información
                         </Button>
-                        
-          </div>
-          <div class="form-group">
-          <Link className="Font-Link" to={"/products"}>
-                    <Button variant="primary">Go back</Button>
-                </Link>
-                        
-          </div>
-        </segment>
-      </div>
-    )
-  }
+                        <br/>
+                        <h1>{auth.selectedProduct.title}</h1>
+                        <p>{auth.selectedProduct.description}</p>
+
+                    {auth.selectedProduct.reviews.map((review,index) => {
+                        return <CommentCard cUser={review.user} cComment={review.comment} />
+                    })}
+
+                    <br/>
+
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Escribe tu comentario</label>
+                        <textarea onChange={this.setComment} class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                        <Button onClick={this.sendComment}>
+                            Comentar
+                        </Button>
+
+                    </div>
+                    <div class="form-group">
+                        <Link className="Font-Link" to={"/products"}>
+                            <Button variant="primary">Go back</Button>
+                        </Link>
+
+                    </div>
+                </segment>
+            </div>
+        )
+    }
 
 }
 
 export default ListComments
 /*
+
+                    {auth.selectedProduct.reviews.map((review,index) => {
+                        return <CommentCard cUser={review.user} cComment={review.comment} />
+                    })}
+    
+                    <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"Primer Comentario Producto 1"} />
+                    <CommentCard cUser={"5dce17c32e64e0410c97a659"} cComment={"Otro comentario"} />
+                    <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"Mi mensaje es muy importante brpw"} />
+                    <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"este es mi mensaje carajo}"} />
+                    <CommentCard cUser={"5dd49bdf78d2210158f38369"} cComment={"este es el p1"} />
+
+
+
+
+
+
 var user1 =this.state.product.reviews;
     user1.map((rev,index) =>{
       usrs[index]= rev.user;

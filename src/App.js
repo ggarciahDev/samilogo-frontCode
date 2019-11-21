@@ -27,7 +27,7 @@ class App extends React.Component {
   }
 
   test() {
-    console.log(auth.currentProductID);
+    console.log(auth.selectedProduct.reviews[0].comment)
   }
 
   render() {

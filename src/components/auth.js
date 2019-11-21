@@ -1,5 +1,13 @@
 class Auth {
     constructor() {
+        this.selectedProduct = {
+            title: "^ Clic button ^",
+            description: "",
+            reviews: [
+                {user: "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _",
+                comment: "_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _"}
+            ]
+        }
         this.comment = ""
         this.currentProductID = ""
         this.authenticated = false
@@ -12,6 +20,10 @@ class Auth {
             email: "",
             password: ""
         }
+    }
+
+    setSelectedProduct(product){
+        this.selectedProduct = product
     }
 
     resetComment(){
