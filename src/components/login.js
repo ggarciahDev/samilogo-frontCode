@@ -28,7 +28,7 @@ class Login extends Component {
   }
 
   logIn = () => {
-    fetch("http://localhost:3000/signin", {
+    fetch("http://localhost:8080/signin", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
@@ -44,16 +44,12 @@ class Login extends Component {
           auth.logIn();
           auth.setUser(user);
           this.props.history.push("/products")
-
-          //this.props.loadUser(user)
         } else {
 
           auth.logOut();
           this.setState({
             errorText: "Usuario o contraseña incorrectos. Vuelve a intentarlo."
           })
-          //console.log("Error", user.error)
-
         }
       })
 

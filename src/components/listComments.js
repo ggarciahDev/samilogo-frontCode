@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-
 class ListComments extends Component {
   constructor(props) {
     super(props)
@@ -20,7 +19,7 @@ class ListComments extends Component {
   }
 
   sendComment() {
-    axios.put("http://localhost:3000/api/products/" + auth.currentProductID, {
+    axios.put("http://localhost:8080/api/products/" + auth.currentProductID, {
       review: {
         user: auth.user._id,
         comment: auth.comment
@@ -70,13 +69,13 @@ class ListComments extends Component {
             <Button onClick={this.sendComment}>
               Comentar
                         </Button>
-                        
+
           </div>
           <div class="form-group">
-          <Link className="Font-Link" to={"/products"}>
-                    <Button variant="primary">Go back</Button>
-                </Link>
-                        
+            <Link className="Font-Link" to={"/products"}>
+              <Button variant="primary">Go back</Button>
+            </Link>
+
           </div>
         </segment>
       </div>
