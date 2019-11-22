@@ -22,7 +22,6 @@ class Auth {
         }
     }
 
-<<<<<<< HEAD
     resetSelectedProduct(){
         this.selectedProduct = {
             title: "^ Clic button ^",
@@ -39,9 +38,6 @@ class Auth {
     }
 
     resetComment(){
-=======
-    resetComment() {
->>>>>>> 0120dcaaf96697975a06ff3431c33873cc9639b3
         this.comment = ""
     }
 
