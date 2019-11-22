@@ -2,7 +2,7 @@
 FROM node:13.1.0
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Move dependencies to workdir
 COPY package*.json ./

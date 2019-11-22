@@ -1,0 +1,8 @@
+version: '2'
+services:
+  app: 
+    container_name: samilogo-front
+    restart: always
+    build: .
+    ports:
+      - '80:3000'
