@@ -61,7 +61,7 @@ class SignUp extends Component {
   }
 
   sendUserData() {
-    fetch("http://localhost:8080/api/users", {
+    fetch("http://35.174.199.129:5000/api/users", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

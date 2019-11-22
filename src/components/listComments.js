@@ -19,7 +19,7 @@ class ListComments extends Component {
   }
 
   sendComment() {
-    axios.put("http://localhost:8080/api/products/" + auth.currentProductID, {
+    axios.put("http://35.174.199.129:5000/api/products/" + auth.currentProductID, {
       review: {
         user: auth.user._id,
         comment: auth.comment
