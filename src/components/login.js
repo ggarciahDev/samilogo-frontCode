@@ -28,7 +28,7 @@ class Login extends Component {
   }
 
   logIn = () => {
-    fetch("http://localhost:3000/signin", {
+    fetch("http://35.174.199.129:5000/signin", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
