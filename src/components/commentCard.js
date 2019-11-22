@@ -2,9 +2,9 @@ import React from 'react';
 import Card from 'react-bootstrap/Card'
 
 
-function CommentCard({ cUser, cComment }){    
+function CommentCard({ cUser, cComment }) {
     return (
-        <Card style={{ minWidth: '18rem',minheigth: "250px", maxwidth: '18rem',maxheigth: "250px"  }} >
+        <Card style={{ minWidth: '18rem', minheigth: "250px", maxwidth: '18rem', maxheigth: "250px" }} >
             <Card.Body>
                 <Card.Title> {cUser} </Card.Title>
                 <Card.Text>
@@ -12,7 +12,7 @@ function CommentCard({ cUser, cComment }){
                 </Card.Text>
             </Card.Body>
         </Card>
-    ); 
+    );
 }
 
 export default CommentCard

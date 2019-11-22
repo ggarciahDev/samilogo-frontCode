@@ -69,20 +69,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-/*
-          <ProtectedListProducts
-            path="/products"
-            component={ListProducts}
-          />
-
-
-<Route path="/" exact email="sf@mail.com" component={Login} />
-<Route path="/signup" component={SignUp} />
-<Route path="/products" component={listProducts} />
-
-          <Route
-            path='/products'
-            render={(props) => <ListProducts {...props} isSignedIn={this.state.isSignedIn} />}
-          />
-*/

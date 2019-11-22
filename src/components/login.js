@@ -9,7 +9,7 @@ class Login extends Component {
     super(props)
 
     this.state = {
-      errorText : '',
+      errorText: '',
       email: props.email,
       password: ""
     }
@@ -44,20 +44,16 @@ class Login extends Component {
           auth.logIn();
           auth.setUser(user);
           this.props.history.push("/products")
-
-          //this.props.loadUser(user)
         } else {
 
           auth.logOut();
           this.setState({
             errorText: "Usuario o contraseña incorrectos. Vuelve a intentarlo."
           })
-          //console.log("Error", user.error)
-
         }
       })
 
-      console.log(auth.isAuth());
+    console.log(auth.isAuth());
   }
 
   render() {
@@ -103,20 +99,3 @@ class Login extends Component {
 }
 
 export default Login
-
-/*
-              onClick={
-                () => {
-                  auth.logIn( () => {
-                    this.props.history.push("/products")
-                  } )
-                }
-              }
-
-
-            <Link className="Font-Link" to="/products">
-              <Button onClick={this.logIn} variant="primary" type="submit">
-                Ingresar
-              </Button>
-            </Link>
-*/
