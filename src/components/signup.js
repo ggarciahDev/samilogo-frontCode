@@ -82,10 +82,6 @@ class SignUp extends Component {
     this.props.history.push("/products")
   }
 
-  test() {
-    console.log(this.state);
-  }
-
   render() {
     return (
       <div className="App">
@@ -118,20 +114,12 @@ class SignUp extends Component {
             </Form.Group>
           </Form>
           <br />
-          <Button onClick={this.sendUserData} variant="primary" type="submit">
-            Registrarse
-          </Button>
 
           <Link className="Font-Link" to="/products">
             <Button onClick={() => this.sendUserData()} variant="primary" type="submit">
               Registrarse
-                </Button>
-          </Link>
-
-          <br />
-          <Button onClick={() => this.test()} variant="primary" type="submit">
-            Do Test
             </Button>
+          </Link>
         </segment>
       </div>
     )

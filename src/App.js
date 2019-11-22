@@ -56,13 +56,6 @@ class App extends React.Component {
             render={(props) => <ListComments {...props} />}
           />
         </Router>
-
-        <div className="GlobalButton">
-          <Button onClick={() => this.test()} variant="primary" type="submit">
-            Do Global Test
-          </Button>
-        </div>
-
       </div>
     );
   }
